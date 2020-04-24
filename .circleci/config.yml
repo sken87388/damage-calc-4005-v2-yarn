@@ -20,12 +20,12 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
+
       - run: mkdir junit
       - run:
           command: node_modules/.bin/mocha test --reporter mocha-junit-reporter
-          evironment:
-              MOCHA_FILE: ./junit/test-results.xml
+          environment:
+            MOCHA_FILE: ./junit/test-results.xml
           when: always
       - store_test_results:
           path: ./junit
